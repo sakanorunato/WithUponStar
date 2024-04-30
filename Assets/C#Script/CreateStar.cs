@@ -19,13 +19,13 @@ public class CreateStar : MonoBehaviour
     Vector3[] rectanglePositions = new Vector3[]
     {
         new Vector3(-2f, 1f, 0f),
-        new Vector3(-2f, 2f, 0f),
+        new Vector3(-2f, -2f, 0f),
         new Vector3(2f, 1f, 0f),
         new Vector3(2f, -2f, 0f)
     };
 
     //星座が作れているかカウントする変数
-    int clearCount;
+    //int clearCount;
 
     //三角形の生成
     public void TriangleStarCleate()
@@ -45,11 +45,24 @@ public class CreateStar : MonoBehaviour
         }
     }
 
+    //オブジェクトのリセット
     public void ResetStar()
     {
-        Destroy(star);
-        Destroy(solidLine);
-        clearCount = 0;
+        GameObject[] solidLineToDestroy = GameObject.FindGameObjectsWithTag("solidLine");
+        GameObject[] starToDestroy = GameObject.FindGameObjectsWithTag("star");
+
+        // 実線のオブジェクトを破棄
+        foreach (GameObject obj in solidLineToDestroy)
+        {
+            Destroy(obj);
+        }
+
+        // 星のオブジェクトを破棄
+        foreach (GameObject obj in starToDestroy)
+        {
+            Destroy(obj);
+        }
+
     }
 
 }

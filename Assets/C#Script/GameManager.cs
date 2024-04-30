@@ -6,10 +6,12 @@ public class GameManager : MonoBehaviour
 {
     public bool gameProceesFlag;
     StageManager stageManager;
+    CheckConstellation checkConstellation;
     // Start is called before the first frame update
     void Start()
     {
         stageManager = GetComponent<StageManager>();
+        checkConstellation = GetComponent<CheckConstellation>();
         StartGame();
     }
 
@@ -21,6 +23,13 @@ public class GameManager : MonoBehaviour
             stageManager.Stage001();
             gameProceesFlag = false;
         }
+
+        if (checkConstellation.nextFlag)
+        {
+            gameProceesFlag = true;
+            checkConstellation.nextFlag = false;
+        }
+
     }
 
     void StartGame()

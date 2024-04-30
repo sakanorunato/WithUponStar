@@ -11,11 +11,11 @@ public class CheckConstellation : MonoBehaviour
     Vector3 trianglePos2 = new Vector3(-3f, 0f, 0f);
     Vector3 trianglePos3 = new Vector3(3f, 0f, 0f);
 
-    //GameManager manager = new GameManager();
-
-    public bool triangleClear = false;
+    public int consClearNo = 1;
     //星座が作れているかカウントする変数
     int clearCount;
+
+    public bool nextFlag;
 
     //星座が作れているか判定する関数、プレイヤーScから呼び出す
     public void CheckTriangleCons(GameObject obj)
@@ -44,8 +44,8 @@ public class CheckConstellation : MonoBehaviour
 
         if (clearCount == 6)
         {
-            triangleClear = true;
-            manager.gameProceesFlag = true;
+            consClearNo = 2;
+            nextFlag = true;
         }
     }
 }

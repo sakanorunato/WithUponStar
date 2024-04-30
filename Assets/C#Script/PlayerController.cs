@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
@@ -18,8 +19,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 endPos;
     //ÉtÉâÉOÇÃïœêî
     private bool createLineFlag;
+    //
+    private List<GameObject> existingLines = new List<GameObject>();
 
-    //CheckConstellation checkConstellation;
+    CheckConstellation checkConstellation;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
         createLineFlag = false;
 
-        //checkConstellation = GameObject.Find("CheckConstellation").GetComponent<CheckConstellation>();
+        checkConstellation = GameObject.Find("GameManager").GetComponent<CheckConstellation>();
     }
 
     // Update is called once per frame
@@ -75,6 +78,18 @@ public class PlayerController : MonoBehaviour
                 endPos = hit.collider.transform.position;
                 if (!startPos.Equals(endPos))
                 {
+                    if (existingLines != null)
+                    {
+                        foreach (GameObject obj in existingLines)
+                        {
+                            LineRenderer solidRenderer = obj.GetComponent<LineRenderer>();
+                            for (int i = 0; i < solidRenderer.positionCount; i++)
+                            {
+                                Vector3 position = solidRenderer.GetPosition(i);
+                                Debug.Log("Position of point " + i + ": " + position);
+                            }
+                        }
+                    }
                     CreateSolidLine(startPos, endPos);
                 }
             }
@@ -95,7 +110,9 @@ public class PlayerController : MonoBehaviour
 
         Instantiate(solidLine);
 
-        //checkConstellation.CheckTriangleCons(solidLine);
+        checkConstellation.CheckTriangleCons(solidLine);
+
+        existingLines.Add(solidLine);
 
     }
 }

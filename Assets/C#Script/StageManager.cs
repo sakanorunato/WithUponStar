@@ -5,16 +5,26 @@ using UnityEngine;
 public class StageManager : MonoBehaviour
 {
     CreateStar createStar;
-    //CheckConstellation checkConstellation = new CheckConstellation();
+    CheckConstellation checkConstellation;
 
     void Start()
     {
         createStar = GameObject.Find("CreateStar").GetComponent<CreateStar>();
+        checkConstellation = GetComponent<CheckConstellation>();
     }
 
     public void Stage001()
     {
-        createStar.TriangleStarCleate();
+        switch (checkConstellation.consClearNo)
+        {
+            case 1:
+                createStar.TriangleStarCleate();
+                break;
+            case 2:
+                createStar.ResetStar();
+                createStar.RectangleStarCleate();
+                break;
+        }
     }
     
 }
