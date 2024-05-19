@@ -18,11 +18,15 @@ public class StageManager : MonoBehaviour
         switch (checkConstellation.consClearNo)
         {
             case 1:
-                createStar.TriangleStarCleate();
+                createStar.DiamondStarsCreate();
                 break;
             case 2:
                 createStar.ResetStar();
-                createStar.RectangleStarCleate();
+                createStar.StarConstellation();
+                break;
+            default:
+                createStar.ResetStar();
+                Debug.Log("ÉNÉäÉAÇµÇ‹ÇµÇΩ");
                 break;
         }
     }

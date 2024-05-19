@@ -6,6 +6,7 @@ TagManager:
   tags:
   - solidLine
   - star
+  - constellation
   layers:
   - Default
   - TransparentFX
@@ -40,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: second
+    uniqueID: 3883436545
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

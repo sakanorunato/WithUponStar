@@ -199,8 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38265c098766ba04aadd07f036ebc5a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  star: {fileID: 1175070876688568360, guid: 7ca85f9060fdd0146a67990938c123d1, type: 3}
-  solidLine: {fileID: 0}
+  diamondConstellation: {fileID: 2225346362483295726, guid: 16eea147f90058e449adf00cffc44d14, type: 3}
+  starConstellation: {fileID: 3576462629315245734, guid: fdfbcb5f450879148b664ad50c722aa6, type: 3}
 --- !u!4 &262803387
 Transform:
   m_ObjectHideFlags: 0
@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000018a78e7
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0

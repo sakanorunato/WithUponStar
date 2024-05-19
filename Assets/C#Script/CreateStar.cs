@@ -5,51 +5,30 @@ using UnityEngine;
 
 public class CreateStar : MonoBehaviour
 {
-    public GameObject star;
-    public GameObject solidLine;
-    //三角形の星座の位置変数
-    Vector3[] trianglePositions = new Vector3[]
-   {
-        new Vector3(0f, 3f, 0f),
-        new Vector3(-3f, 0f, 0f),
-        new Vector3(3f, 0f, 0f)
-   };
-
-    //四角形の星座の位置変数
-    Vector3[] rectanglePositions = new Vector3[]
-    {
-        new Vector3(-2f, 1f, 0f),
-        new Vector3(-2f, -2f, 0f),
-        new Vector3(2f, 1f, 0f),
-        new Vector3(2f, -2f, 0f)
-    };
+    public GameObject diamondConstellation;
+    public GameObject starConstellation;
 
     //星座が作れているかカウントする変数
     //int clearCount;
 
-    //三角形の生成
-    public void TriangleStarCleate()
+    //ダイヤ星座の生成
+    public void DiamondStarsCreate()
     {
-        foreach (Vector3 position in trianglePositions)
-        {
-            Instantiate(star, position, Quaternion.identity);
-        }
+        Instantiate(diamondConstellation);
+        CheckConstellation.clearCount = 4;
     }
 
-    //四角形の生成
-    public void RectangleStarCleate()
+    public void StarConstellation()
     {
-        foreach (Vector3 position in rectanglePositions)
-        {
-            Instantiate(star, position, Quaternion.identity);
-        }
+        Instantiate(starConstellation);
+        CheckConstellation.clearCount = 5;
     }
 
     //オブジェクトのリセット
     public void ResetStar()
     {
         GameObject[] solidLineToDestroy = GameObject.FindGameObjectsWithTag("solidLine");
-        GameObject[] starToDestroy = GameObject.FindGameObjectsWithTag("star");
+        GameObject starToDestroy = GameObject.FindGameObjectWithTag("constellation");
 
         // 実線のオブジェクトを破棄
         foreach (GameObject obj in solidLineToDestroy)
@@ -58,10 +37,10 @@ public class CreateStar : MonoBehaviour
         }
 
         // 星のオブジェクトを破棄
-        foreach (GameObject obj in starToDestroy)
-        {
-            Destroy(obj);
-        }
+        Destroy(starToDestroy);
+
+        //ライン生成の重複チェックリストをリセット
+        PlayerController.existingLines.Clear();
 
     }
 
